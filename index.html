@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocyray - Online Grocery Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        main {
+            padding: 1rem;
+        }
+        
+        .products {
+            margin-bottom: 2rem;
+        }
+        
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .product-item {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 1 1 calc(25% - 1rem);
+        }
+        
+        .product-item img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .product-item h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .cart {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 70px;
+        }
+        
+        .cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .cart ul li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        section {
+            display: none;
+        }
+        
+        section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Grocyray</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('products')">Products</a></li>
+                <li><a href="#" onclick="showSection('cart')">Cart</a></li>
+                <li><a href="#" onclick="showSection('privacy-policy')">Privacy Policy</a></li>
+                <li><a href="#" onclick="showSection('shipping-policy')">Shipping Policy</a></li>
+                <li><a href="#" onclick="showSection('contact-us')">Contact Us</a></li>
+                <li><a href="#" onclick="showSection('cancellation-refunds')">Cancellation and Refunds</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section style="margin-bottom: 70px;" id="home" class="active">
+            <h2>Welcome to Grocyray</h2>
+            <p>Your one-stop online grocery store.</p>
+            <div class="product-list">
+                <div class="product-item">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.51GC6H-QKiogoLJdxe7YXgHaIS&pid=Api&P=0&h=220" alt="Orange">
+                    <h3>Orange</h3>
+                    <p>Price: ₹0.80 each</p>
+                    <button onclick="addToCart('Orange', 0.80)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.Iwpd-0C3ziKGXuYSTMATxgHaE6&pid=Api&P=0&h=220" alt="Broccoli">
+                    <h3>Broccoli</h3>
+                    <p>Price: ₹1.50 each</p>
+                    <button onclick="addToCart('Broccoli', 1.50)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.hVjhVt5EiigNSJr1QK93AAHaIJ&pid=Api&P=0&h=220" alt="Apple">
+                    <h3>Apple</h3>
+                    <p>Price: ₹20.00 each</p>
+                    <button onclick="addToCart('Apple', 1.00)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.PKHYlstDYAp3lswvX1o0aAHaE8&pid=Api&P=0&h=220" alt="Orange">
+                    <h3>Orange</h3>
+                    <p>Price: ₹0.80 each</p>
+                    <button onclick="addToCart('Orange', 0.80)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.CZkr0J3LeRsMafEnZZGpcAHaFj&pid=Api&P=0&h=220" alt="Carrot">
+                    <h3>Carrot</h3>
+                    <p>Price: ₹0.60 each</p>
+                    <button onclick="addToCart('Carrot', 0.60)">Add to Cart</button>
+                </div>
+
+                <div class="product-item">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.ITbfAAvaxmOLCHmFn9_kiQHaE8&pid=Api&P=0&h=220" alt="Tomato">
+                    <h3>Tomato</h3>
+                    <p>Price: ₹0.70 each</p>
+                    <button onclick="addToCart('Tomato', 0.70)">Add to Cart</button>
+                </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="product-list">
+                <div class="product-item">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.51GC6H-QKiogoLJdxe7YXgHaIS&pid=Api&P=0&h=220" alt="Orange">
+                    <h3>Orange</h3>
+                    <p>Price: ₹0.80 each</p>
+                    <button onclick="addToCart('Orange', 0.80)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.Iwpd-0C3ziKGXuYSTMATxgHaE6&pid=Api&P=0&h=220" alt="Broccoli">
+                    <h3>Broccoli</h3>
+                    <p>Price: ₹1.50 each</p>
+                    <button onclick="addToCart('Broccoli', 1.50)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.hVjhVt5EiigNSJr1QK93AAHaIJ&pid=Api&P=0&h=220" alt="Apple">
+                    <h3>Apple</h3>
+                    <p>Price: ₹20.00 each</p>
+                    <button onclick="addToCart('Apple', 1.00)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.PKHYlstDYAp3lswvX1o0aAHaE8&pid=Api&P=0&h=220" alt="Orange">
+                    <h3>Orange</h3>
+                    <p>Price: ₹0.80 each</p>
+                    <button onclick="addToCart('Orange', 0.80)">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.CZkr0J3LeRsMafEnZZGpcAHaFj&pid=Api&P=0&h=220" alt="Carrot">
+                    <h3>Carrot</h3>
+                    <p>Price: ₹0.60 each</p>
+                    <button onclick="addToCart('Carrot', 0.60)">Add to Cart</button>
+                </div>
+
+                <div class="product-item">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.ITbfAAvaxmOLCHmFn9_kiQHaE8&pid=Api&P=0&h=220" alt="Tomato">
+                    <h3>Tomato</h3>
+                    <p>Price: ₹0.70 each</p>
+                    <button onclick="addToCart('Tomato', 0.70)">Add to Cart</button>
+                </div>
+                <!-- Add more products as needed -->
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </ul>
+            <p>Total: ₹<span id="total-price">0.00</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </section>
+
+        <!-- Privacy Policy Section -->
+        <section id="privacy-policy">
+            <h2>Privacy Policy</h2>
+            <p>
+                At Grocyray, we value your privacy. This Privacy Policy outlines how we collect, use, and protect your personal information.
+            </p>
+            <h3>1. Information We Collect</h3>
+            <p>We may collect personal information such as your name, email address, phone number, and shipping address when you make a purchase or create an account on our website.</p>
+
+            <h3>2. How We Use Your Information</h3>
+            <p>Your personal information is used to process orders, manage your account, and provide you with updates on our products and services.</p>
+
+            <h3>3. Sharing Your Information</h3>
+            <p>We may share your information with third-party service providers to facilitate payments, shipping, and marketing. We do not sell or rent your personal data to third parties.</p>
+
+            <h3>4. Cookies</h3>
+            <p>We use cookies to enhance your browsing experience and personalize content. You can adjust your cookie settings in your browser at any time.</p>
+
+            <h3>5. Your Rights</h3>
+            <p>You have the right to access, modify, or delete your personal information. Contact us at privacy@grocyray.com for any inquiries.</p>
+        </section>
+        <!-- Add more details here -->
+        </section>
+
+        <!-- Shipping Policy Section -->
+        <section id="shipping-policy">
+            <h2>Shipping Policy</h2>
+            <p>We offer reliable shipping services to ensure your groceries arrive fresh and on time.</p>
+
+            <h3>1. Shipping Methods</h3>
+            <p>Choose from Standard or Express shipping options at checkout.</p>
+
+            <h3>2. Shipping Costs</h3>
+            <p>Standard shipping is free for orders over ₹50. For orders below this amount, a flat rate of ₹5 applies. Express shipping is available for an additional ₹10.</p>
+
+            <h3>3. Delivery Times</h3>
+            <p>Standard shipping typically takes 3-5 business days, while Express shipping ensures delivery within 1-2 business days.</p>
+
+            <h3>4. Order Tracking</h3>
+            <p>Once your order has been shipped, you will receive a tracking number via email to monitor your delivery status.</p>
+
+            <h3>5. International Shipping</h3>
+            <p>We currently ship within the India only. International shipping options will be available soon.</p>
+        </section>
+        <!-- Add more details here -->
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact-us">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or concerns, feel free to reach out to us using the form below or through our contact details.</p>
+
+            <h3>Customer Service</h3>
+            <p>Email: sohal99223.com</p>
+            <p>Phone: 7447402615</p>
+            <p>Business Hours: Monday - Friday, 9 AM - 6 PM</p>
+
+            <h3>Physical Address</h3>
+            <p>Nagpur</p>
+
+            <h3>Follow Us</h3>
+            <p>Stay connected with us on social media:</p>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+
+            <h3>Contact Form</h3>
+            <form style="margin-bottom: 70px;" action="submit_form.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+            <!-- Add more contact details here -->
+        </section>
+
+        <!-- Cancellation and Refunds Section -->
+        <section id="cancellation-refunds">
+            <h2>Cancellation and Refunds</h2>
+            <p>If you need to cancel your order or request a refund...</p>
+            <!-- Add more details here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Grocyray. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(product, price) {
+            const cartItem = {
+                product,
+                price
+            };
+            cart.push(cartItem);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+
+            let totalPrice = 0;
+            cart.forEach((item) => {
+                const li = document.createElement('li');
+                li.textContent = `₹{item.product} - ₹₹{item.price.toFixed(2)}`;
+                cartItems.appendChild(li);
+                totalPrice += item.price;
+            });
+
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        }
+
+        function checkout() {
+            if (cart.length > 0) {
+                alert('Thank you for your purchase!');
+                cart = [];
+                updateCart();
+            } else {
+                alert('Your cart is empty!');
+            }
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('main section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
